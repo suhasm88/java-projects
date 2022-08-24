@@ -4,6 +4,10 @@ pipeline {
         VERSION = "${env.BUILD_ID}"
     }
     stages{
+         stage('Initialize'){
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+         }
         stage("sonar quality check"){
             agent {
             docker {
@@ -13,9 +17,8 @@ pipeline {
         }
              steps {
                 script {
-                    withSonarQubeEnv(credentialsId: '2f18007b-d594-42e6-bd9a-e096d8ff72f5') {
-                       sh 'mvn clean install'
-                    }
+                    sh 'mvn clean install'
+                    
             }                    
 
 
