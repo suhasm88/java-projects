@@ -5,11 +5,6 @@ pipeline {
     }
     stages{
         stage("sonar quality check"){
-            agent {
-                docker {
-                    image 'maven'
-                        }
-            }
             steps{
                 script{
                     withSonarQubeEnv(credentialsId: 'b297ab87-6860-4214-aee9-b833d1302efc') {
@@ -22,3 +17,4 @@ pipeline {
         }
     }
 }
+
