@@ -1,5 +1,5 @@
-def dockerHome = tool 'docker'
 pipeline {
+    def dockerHome = tool 'docker'
     agent any
      environment{
         VERSION = "${env.BUILD_ID}"
