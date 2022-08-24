@@ -13,7 +13,8 @@ pipeline {
         }
              steps {
                 script {
-                    sh 'mvn clean install'
+                    withSonarQubeEnv(credentialsId: '2f18007b-d594-42e6-bd9a-e096d8ff72f5') {
+                       sh 'mvn clean install'
                     }
             }                    
 
