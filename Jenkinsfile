@@ -6,16 +6,14 @@ pipeline {
     stages{
         stage("sonar quality check"){
             agent {
-            docker {
-                image 'maven:latest'
-                }
+            docker { image 'maven:latest' }
         }
              steps{
                 script{
-                    withSonarQubeEnv(credentialsId: 'b297ab87-6860-4214-aee9-b833d1302efc') {
-                        sh 'mvn clean install'
-
+                    withSonarQubeEnv(credentialsId: '2f18007b-d594-42e6-bd9a-e096d8ff72f5') {
+                        sh 'maven clean install'
                     }
+
 
                 }
             }
